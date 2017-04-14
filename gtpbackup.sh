@@ -129,6 +129,6 @@ then
 	dconf write /org/gnome/terminal/legacy/profiles:/list $listIdStr
 # --- Nothing to do ---
 else
-		echo "No command specified. Use backup for crearing a backup or restore for restoring a backup"
-		exit 0;
+	echo "No command specified. Use backup for crearing a backup or restore for restoring a backup"
+	exit 0;
 fi
