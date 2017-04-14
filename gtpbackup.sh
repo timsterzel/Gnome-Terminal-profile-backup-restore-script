@@ -46,7 +46,6 @@ then
 
 		((cnt++))
 	done
-	echo $createdFiles
 	if [ "$cnt" -ne "0" ]; then
 		tar -cf $BACKUPNAME $indexFileName $profileBackupFiles --remove-files
 		echo "$cnt profiles saved and stored in $BACKUPNAME"
@@ -73,8 +72,6 @@ then
 	# Loop over indexes
 	for index in $indexes
 	do
-		echo "#############"
-		echo $index
 		# Split index string in id and filename by its delimiter '<==>'
 		arr=(${index//<==>/ })
 		id=${arr[0]}
@@ -90,15 +87,10 @@ then
 		# Load profile backup file
 		#profileData=$(tar -xf $BACKUPNAME $fileName -O)
 		tar -xf $BACKUPNAME $fileName
-		#echo $profileData > "tmpfile.dconf"
 
-		echo $profileData
 		# Restore profile data
 		$(dconf load /org/gnome/terminal/legacy/profiles:/$id/ < $fileName)
 		rm $fileName
-
-		#actualListEntries=$( dconf read /org/gnome/terminal/legacy/profiles:/list)
-		echo "#############"
 	done
 
 	# Add all ids to the list key of /org/gnome/terminal/legacy/profiles:/, but first load all sub ids (So we can add them to the key later)
@@ -120,11 +112,9 @@ then
 			fi
 			
 			listIdStr="$listIdStr$listId"
-			echo $listId
 		fi
 	done
 	listIdStr="$listIdStr]"
-	echo $listIdStr
 	# Set list value
 	dconf write /org/gnome/terminal/legacy/profiles:/list $listIdStr
 # --- Nothing to do ---
