@@ -2,6 +2,7 @@
 # A script which stores your gnome-terminal profiles in a tar archive which can get restored
 
 COMMAND=$1
+# --- Create backup ---
 if [ "$COMMAND" == "backup" ]
 then
 	BACKUPNAME=$2
