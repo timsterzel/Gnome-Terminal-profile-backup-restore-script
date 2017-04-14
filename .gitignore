@@ -1,0 +1,13 @@
+# Tmp files
+*.temp
+
+# Others
+*.vim
+*.swp
+*.cpp.swp
+*.swo
+*.txt~
+*~
+*.d
+.vimrc
+.nvimrc
